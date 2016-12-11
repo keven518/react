@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="../js/react.min.js"></script>
+  <script type="text/javascript" src="../js/JSXTransformer.js"></script>
+  <script type="text/jsx">
+    var ClickApp = React.createClass({
+        getInitialState:function(){
+          return {
+            isVisible:true,
+            titleMessage: '你好世界(来自state哦)',
+            clickCount: 0,
+            subMessages:[
+              '我会代码搬砖',
+              '以及花式搬砖',
+              '不说了，工头叫我回去搬砖了.......'
+            ]
+          }
+        },
+        handleClick: function(e) {
+        	this.setState({
+        		clickCount: this.state.clickCount + 1,
+        	});
+        	console.log(e);
+        	console.log(e.target);
+        	console.log(e.nativeEvent);
+        },
+        render: function(){
+          return ( 
+            <div>
+              <h1>点击下面按钮</h1> 
+              <button onClick={this.handleClick}>点击我</button> 
+              <p>你一共点击了:{this.state.clickCount}</p>
+            </div>
+          )
+        }
+    });
+
+    var clickComponent = React.render( 
+      <ClickApp />, 
+      document.getElementById('app'),
+      function(){
+        console.log('渲染完成了')
+      })
+  </script>
+</body>
+</html>
