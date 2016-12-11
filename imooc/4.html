@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/react.min.js"></script>
+  <script src="js/react-dom.min.js"></script>
+  <script src="js/browser.min.js"></script>
+  <style type="text/css">
+    .top{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+  var MessageBox = React.createClass({
+    kv_f: function(n){
+      alert('世界你好' + this.props.name)
+    },
+    render: function(){
+        return (
+          <div>
+            <div className="top" onClick={this.kv_f}>Hello </div>
+            <Submessage name="柯文万岁"/>
+          </div>
+        )
+        
+    }
+  });
+
+  var Submessage = React.createClass({
+      kv_f8: function(n){
+        alert('世界你好' + this.props.name)
+      },
+      render: function(){
+        return (
+          <div>
+            <h3 onClick={this.kv_f8}>写代码很有意思</h3>
+            <Footer/>
+          </div>
+        )
+      }
+  });
+
+  var Footer = React.createClass({
+      render: function(){
+        return (
+          <small>因为我们在用代码创造</small>
+        )
+      }
+  });
+  
+  React.render(<MessageBox name='World' title='Mrs' />,
+  document.getElementById('app'),function(){
+  console.log('ok')
+  });
+
+</script>
+  
+</body>
+</html>

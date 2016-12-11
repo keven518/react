@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/react.min.js"></script>
+  <script src="js/react-dom.min.js"></script>
+  <script src="js/browser.min.js"></script>
+  <style type="text/css">
+    .top{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="kv"></div>
+<script type="text/babel">
+  var Hello = React.createClass({
+    kv_f: function(n){
+      alert('世界你好' + this.props.name)
+    },
+    render: function(){
+      var cmm = 'wan';
+      var kv = {
+      name: 'kewen',
+      'age': 36
+      };
+      var style = {
+        color: '#090',
+        fontSize: '44px'
+      };
+      if(cmm == 'wan'){
+        console.log(kv);
+        return <div className="top">Hello {this.props.name+'kv'+cmm}
+        {this.props.title} -- {kv.name}<span style={style} onClick={this.kv_f}>蔡曼曼520</span></div>
+        ;
+      }else{
+        return <div>柯文万岁</div>;
+      }
+    }
+  });
+  
+  React.render(<Hello name='World' title='Mrs' />,
+  document.getElementById('kv'),function(){
+  console.log('ok')
+  });
+
+</script>
+  
+</body>
+</html>

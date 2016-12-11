@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/react.min.js"></script>
+  <script src="js/react-dom.min.js"></script>
+  <script src="js/browser.min.js"></script>
+  <style type="text/css">
+    .top{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="kv"></div>
+<script type="text/babel">
+  var Hello = React.createClass({
+    getInitialState: function(){
+      alert('init');
+      return {
+        opocity: 1.0,
+        color: '#009',
+        fontSize:'24px'
+      };
+    },
+    render: function(){
+      var cmm = 'wan';
+      var kv = {
+      name: 'kewen',
+      'age': 36
+      };
+      var style = {
+        color: '#090',
+        fontSize: '44px'
+      };
+      if(cmm == 'wan'){
+        console.log(kv);
+        return <div style={this.state}>Hello {this.props.name+'kv'+cmm}</div>
+        ;
+      }else{
+        return <div>柯文万岁</div>;
+      }
+    },
+    componentWillMount: function() {
+      alert('will');
+    },
+    componentDidMount: function() {
+      alert('did');
+      console.log(this);
+      var _self = this;
+      window.setTimeout(function(){
+        _self.setState({
+          opacity: 0.2,
+          fontSize: '66px'
+        })
+      })
+    }
+  });
+  
+  React.render(<Hello name='World' title='Mrs' />,
+  document.getElementById('kv'));
+
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="js/react.min.js"></script>
+  <script type="text/javascript" src="js/JSXTransformer.js"></script>
+  <script type="text/jsx">
+    var ClickApp = React.createClass({
+        getInitialState:function(){
+          return {
+            clickCount: 0,
+          }
+        },
+        handleClick: function(){
+          this.setState({
+            clickCount: this.state.clickCount + 1,
+          })
+        },
+        render: function(){
+          return (
+            <div>
+              <h2>点击下面按钮</h2>
+              <button onClick={this.handleClick}>点击我</button>
+              <p>你一共点击了：{this.state.clickCount}</p>
+            </div>
+          )
+        }
+    });
+
+    var messageBox = React.render( <ClickApp />, 
+      document.getElementById('app'),
+      function(){
+        console.log('渲染完成了');
+        console.log(this)
+      })
+  </script>
+</body>
+</html>

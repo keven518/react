@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="js/react.min.js"></script>
+  <script type="text/javascript" src="js/JSXTransformer.js"></script>
+  <script type="text/jsx">
+    var MessageBox = React.createClass({
+        getInitialState:function(){
+          return {
+            isVisible:true,
+            titleMessage: '你好世界(来自state哦)',
+            subMessages:[
+              '我会代码搬砖',
+              '以及花式搬砖',
+              '不说了，工头叫我回去搬砖了.......'
+            ]
+          }
+        },
+        render: function(){
+          return ( 
+            <div>
+              <h1>你好世界！！！</h1> 
+              <h1>{this.state.titleMessage}</h1> 
+              <h1>ss{this.state.isVisible?'kv':'cmm'}</h1> 
+              <Submessage messages={this.state.subMessages}/>
+            </div>
+          )
+        }
+    });
+
+    var Submessage = React.createClass({
+        render:function(){
+            var msgs = [];
+            this.props.messages.forEach(function(msg,index){
+              msgs.push(
+                  <p>码农说: {msg}</p>
+              )
+            });
+            return (
+              <div>
+                <h3>写代码很有意思</h3>{msgs}
+              </div>
+            )
+        }
+    })
+
+    var messageBox = React.render( <MessageBox />, 
+      document.getElementById('app'),
+      function(){
+        console.log('渲染完成了')
+      })
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="js/react.min.js"></script>
+  <script type="text/javascript" src="js/JSXTransformer.js"></script>
+  <script type="text/jsx">
+    var MessageBox = React.createClass({
+        getInitialState:function(){
+          return {
+            isVisible:true,
+            titleMessage: '你好世界(来自state哦)',
+          }
+        },
+        render: function(){
+          var styleObj={
+            color: this.state.isVisible ? 'red' : 'green',
+          }
+          return ( 
+            <div>
+              <h1 style={styleObj}>你好世界！！！</h1> 
+              <h1>{this.state.titleMessage}</h1> 
+              <h1>ss{this.state.isVisible?'kv':'cmm'}</h1> 
+              <Submessage/>
+            </div>
+          )
+        }
+    });
+
+    var Submessage = React.createClass({
+        render:function(){
+            return (
+              <div>
+                <h3>写代码很有意思</h3>
+                <Footer/>
+              </div>
+            )
+        }
+    })
+
+    var Footer = React.createClass({
+        render:function() {
+          return(
+            <small>因为我们在用代码创造世界</small>
+          )
+        }
+    })
+
+    var messageBox = React.render( <MessageBox />, 
+      document.getElementById('app'),
+      function(){
+        console.log('渲染完成了')
+      })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<meta charset="UTF-8">
+<head>
+	<title>Hello, World</title>
+</head>
+<body>
+<div id='app'></div>
+	<script type="text/javascript" src="react-0.13.2/build/react.js"></script>
+	<script type="text/javascript" src="react-0.13.2/build/JSXTransformer.js"></script>
+	<script type="text/jsx">
+		var MessageBox = React.createClass({
+				render: function(){
+					return ( 
+						<div>
+							<h1>你好世界！！！</h1>
+							<Submessage/>		
+						</div>		
+					)
+				}
+		});
+
+		var Submessage = React.createClass({
+				render:function(){
+					return(
+						<div>
+							<h3>写代码很有意思</h3>
+							<Footer/>
+						</div>
+					)
+				}
+		});
+
+		var Footer = React.createClass({
+				render: function(){
+					return (
+						<small>因为我们在用代码创造</small>
+					)
+				}
+		})
+
+		React.render(<MessageBox/>,
+			document.getElementById('app'),
+			function(){
+				console.log('渲染完成啦！！');
+			})
+	</script>
+</body>
+</html>
