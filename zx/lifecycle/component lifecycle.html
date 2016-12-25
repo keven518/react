@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../js/react.min.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+	<script type="text/jsx">
+	  var MessageBox = React.createClass({
+	      getInitialState:function(){
+	      	console.log('getInitialState');
+	        return {
+	          count: 0,	          
+	        }
+	      },
+	      getDefaultProps:function(){
+	      	console.log('getDefaultProps');
+	      	return {}
+	      },
+	      componentWillMount:function(){
+			console.log('componentWillMount');
+			var self = this;
+			
+			this.timer = setInterval(function(){
+				self.setState({
+					count:self.state.count + 1
+				})
+			},1000)
+
+	      },
+	      componentDidMount:function(){
+	      	console.log('componentDidMount');
+	      	console.log(this.getDOMNode());
+	      },
+	      componentWillUnmount:function(){
+			alert('y,r t t k m');
+			clearInterval(this.timer);
+	      },
+	      killMySelf:function(){
+			React.unmountComponentAtNode( document.getElementById('app') );
+			console.log('我被卸了');
+	      },
+	      render: function(){
+	        return ( 
+	          <div>
+	            <h1>messagebox{this.state.count}</h1> 
+	            <button onClick={this.killMySelf}>卸掉这个</button>
+	            <Submessage/>
+	          </div>
+	        )
+	      }
+	  });
+
+	  var Submessage = React.createClass({
+	  	  render:function(){
+		      return (
+		            <div>
+		              <h3>写代码很有意思</h3>
+		            </div>
+		      )
+	  	  }
+	  })
+
+
+	  var messageBox = React.render( <MessageBox/>, 
+	    document.getElementById('app'),
+	    function(){
+	      console.log('渲染完成了')
+	    })
+	</script>
+</body>
+</html>
