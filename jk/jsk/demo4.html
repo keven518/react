@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript" src="../../react-0.13.2/build/react.js"></script>
+	<script type="text/javascript" src="../../react-0.13.2/build/JSXTransformer.js"></script>
+	<script type="text/jsx">
+		var style = {
+			color : 'red',
+			border : '1px #000 solid',
+		}
+		var HelloWorld = React.createClass({
+			kv: {
+					color : 'green',
+					border : '1px #080 solid',
+			},
+			getName: function(){
+				if(this.props.name)
+					return this.props.name
+				else
+					return 'World'
+			},
+			render: function() {
+				return <p style={this.kv}>Hello, World {
+					(function (obj){
+						if(obj.props.name) return obj.props.name
+						else return 'World万能'
+					})(this)
+				}
+				</p>
+			}
+		});
+		React.render(<div style={style}><HelloWorld name="" style={style} /></div>, document.body, function(){
+			console.log(11)
+		});
+	</script>
+</body>
+</html>

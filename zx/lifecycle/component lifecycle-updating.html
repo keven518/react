@@ -25,20 +25,20 @@
 	      componentWillUnmount:function(){
 	      },
 	      
-		  shouldComponentUpdate:function(nextProp,nextState){
-			console.log('shouldComponentUpdate' + nextState.count);
-			//if(nextState.count>3) return false;
-			return true;
-		  },
-		  componentWillUpdate:function(nextProp,nextState){
-		  	console.log('componentWillUpdate');
-		  },
-		  componentDidUpdate:function(){
-		    console.log('componentDidUpdate')
-		  },
+			  shouldComponentUpdate:function(nextProp,nextState){
+					console.log('shouldComponentUpdate' + nextState.count);
+					//if(nextState.count>3) return false;
+					return true;
+			  },
+			  componentWillUpdate:function(nextProp,nextState){
+			  	console.log('componentWillUpdate');
+			  },
+			  componentDidUpdate:function(){
+			    console.log('componentDidUpdate')
+			  },
 	      killMySelf:function(){
-			React.unmountComponentAtNode( document.getElementById('app') );
-			console.log('我被卸了');
+					React.unmountComponentAtNode( document.getElementById('app') );
+					console.log('我被卸了');
 	      },
 	      doUpdate:function(){
 	      	this.setState({
@@ -49,6 +49,7 @@
 	      	console.log('渲染')
 	        return ( 
 	          <div>
+	          	<i>{this.props.kvDate}</i>
 	            <h1>计数{this.state.count}</h1> 
 	            <button onClick={this.killMySelf}>卸掉这个</button>
 	            <button onClick={this.doUpdate}>手动更新一下组件(包括子组件)</button>
@@ -60,8 +61,8 @@
 
 	  var Submessage = React.createClass({
 	  	  componentWillReceiveProps:function(nextProp){
-			console.log('子组件将要获得Prop'+nextProp);
-			console.log(nextProp);
+					console.log('子组件将要获得Prop: '+nextProp);
+					console.dir(nextProp);
 	  	  },
 	  	  shouldComponentUpdate:function(np,ns){
 	  	  	console.log(np);
@@ -72,14 +73,16 @@
 	  	  render:function(){
 		      return (
 		            <div>
-		              <h3>写代码很有意思{this.props.count}</h3>
+		              <h3>写代码很有意思:{this.props.count}</h3>
 		            </div>
 		      )
 	  	  }
 	  })
 
+	  var kvname = 'kv';
 
-	  var messageBox = React.render( <MessageBox/>, 
+
+	  var messageBox = React.render( <MessageBox kvDate = {kvname}/>, 
 	    document.getElementById('app'),
 	    function(){
 	      console.log('渲染完成了')

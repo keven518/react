@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript" src="../../react-0.13.2/build/react.js"></script>
+	<script type="text/javascript" src="../../react-0.13.2/build/JSXTransformer.js"></script>
+	<script type="text/jsx">
+		var style = {
+			color : 'red',
+			border : '1px #000 solid',
+		}
+		var HelloWorld = React.createClass({
+			kv: {
+					color : 'green',
+					border : '1px #080 solid',
+			},
+			render: function() {
+				return <p style={this.kv}>Hello, World {this.props.name}</p>
+			}
+		});
+		React.render(<div style={style}><HelloWorld name="柯文" style={style} /></div>, document.body, function(){
+			console.log(11)
+		});
+	</script>
+</body>
+</html>
